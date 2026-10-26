@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>옆집 사장님의 AI 실습장</title>
+<meta name="description" content="2026 서울신용보증재단 소상공인 공개강좌 · AI 잘 쓰는 옆집 사장님의 비밀 전략 A to Z 실습 페이지">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#ffffff; --ink:#1f2328; --sub:#5b6470; --line:#e3e7ec; --soft:#f5f7f9;
+  --navy:#1B3A5C; --blue:#2E75B6; --coral:#E06B55; --coral-l:#FBE3DC;
+  --sage:#5E9A78; --sage-l:#E3F0E7; --sky:#7FB2DA; --sky-l:#E2EFF8; --gold:#F5B400;
+  --code:#1E232B; --fs:17px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--blue)}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+header.hero{background:var(--navy);color:#fff;padding:28px 0 26px}
+.hero .kicker{font-size:.8rem;opacity:.8;letter-spacing:.02em}
+.hero h1{font-size:1.65rem;line-height:1.3;margin:.35rem 0 .4rem}
+.hero p{margin:0;opacity:.9;font-size:.95rem}
+.tools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.tools .wrap{display:flex;gap:8px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
+.tools a.tab{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.82rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:#fff}
+.tools .fsz{margin-left:auto;display:flex;gap:4px;flex:0 0 auto}
+.tools button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 9px;font:inherit;font-size:.8rem;cursor:pointer}
+section{padding:26px 0 8px}
+h2{font-size:1.3rem;margin:0 0 .3rem;display:flex;align-items:center;gap:10px}
+h2 .num{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;border-radius:50%;background:var(--sky);border:1.5px solid var(--ink);font-size:.95rem}
+h2+.lead{color:var(--sub);margin:0 0 14px;font-size:.95rem}
+.today{display:grid;gap:10px;margin-top:16px}
+.today div{background:rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-size:.92rem}
+.today b{color:var(--gold)}
+.card{border:1.5px solid var(--ink);border-radius:14px;background:#fff;box-shadow:6px 6px 0 #CFD8E2;padding:16px;margin:0 0 18px}
+.card.sky{background:var(--sky-l)} .card.sage{background:var(--sage-l)} .card.coral{background:var(--coral-l)}
+.card h3{margin:0 0 6px;font-size:1.08rem}
+.card p{margin:.2rem 0 .6rem}
+.meta{font-size:.82rem;color:var(--sub)}
+.prompt{position:relative;background:var(--code);color:#fff;border-radius:12px;padding:16px 16px 56px;margin:10px 0;white-space:pre-wrap;font-size:.95rem;line-height:1.7}
+.prompt .var{color:#FFD27A;font-weight:700}
+.copy{position:absolute;right:12px;bottom:12px;border:0;background:var(--coral);color:#fff;font:inherit;font-weight:700;font-size:.88rem;border-radius:999px;padding:8px 16px;cursor:pointer}
+.copy:active{transform:scale(.97)}
+details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--soft);margin:8px 0}
+summary{cursor:pointer;font-weight:700;font-size:.92rem}
+details p,details li{font-size:.92rem}
+ul.tight{margin:.3rem 0;padding-left:1.2rem}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 16px}
+.step{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;font-size:.9rem}
+.step b{display:block;font-size:.95rem;margin-bottom:2px}
+.sit{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:start}
+.sit img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.pill{display:inline-block;font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--coral);color:#fff;margin-right:4px}
+.pill.g{background:var(--sage)} .pill.b{background:var(--blue)}
+.dl{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid var(--blue);border-radius:999px;padding:5px 12px;margin:3px 4px 3px 0;background:#fff}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.check input{width:22px;height:22px;margin-top:2px;flex:0 0 auto}
+.warn{border-left:4px solid var(--coral);background:var(--soft);padding:12px 14px;border-radius:0 12px 12px 0;margin:10px 0;font-size:.92rem}
+footer{margin:30px 0 0;padding:22px 0 40px;border-top:1px solid var(--line);color:var(--sub);font-size:.82rem}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;transition:.25s;pointer-events:none;z-index:20}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:640px){
+  .hero h1{font-size:1.4rem}
+  .sit{grid-template-columns:1fr}
+  .sit img{max-width:100%}
+  .steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">2026 서울신용보증재단 소상공인 공개강좌 · 2026.10.26 · 김덕진</div>
+    <h1>AI 잘 쓰는 옆집 사장님의<br>비밀 전략 A to Z · 실습장</h1>
+    <p>문장 옆 <b>복사</b> 버튼을 누르고, 챗GPT(무료)나 제미나이에 붙여 넣으세요. <span style="color:#FFD27A;font-weight:700">노란 글씨</span>만 우리 가게 이야기로 바꾸면 됩니다.</p>
+    <div class="today">
+      <div><b>오늘 저녁 할 일 1</b> · 네이버 플레이스·톡채널·당근의 영업시간·메뉴·가격·사진이 같은지 확인</div>
+      <div><b>오늘 저녁 할 일 2</b> · 리뷰 하나에 AI 초안 + 사장님만 쓸 수 있는 한 줄로 답글</div>
+      <div><b>오늘 저녁 할 일 3</b> · AI에게 15분 인터뷰 받고 이번 주 할 일 3개 받아 두기</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tools" aria-label="바로가기">
+  <div class="wrap">
+    <a class="tab" href="#start">시작 전</a>
+    <a class="tab" href="#p1">실습 1</a>
+    <a class="tab" href="#p2">실습 2</a>
+    <a class="tab" href="#p3">실습 3</a>
+    <a class="tab" href="#talk">토크콘서트 5상황</a>
+    <a class="tab" href="#more">더 해 보기</a>
+    <a class="tab" href="#check">오늘 저녁 체크</a>
+    <div class="fsz"><button type="button" data-fs="-1" aria-label="글자 작게">가-</button><button type="button" data-fs="1" aria-label="글자 크게">가+</button></div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="start">
+  <h2><span class="num">0</span>시작 전 30초</h2>
+  <p class="lead">휴대폰 하나면 됩니다. 로그인이 안 되면 옆 분과 같이 보셔도 괜찮아요.</p>
+  <div class="steps">
+    <div class="step"><b>1. 앱 열기</b>챗GPT 앱(무료). 없으면 chatgpt.com, 또는 제미나이·클로드·코파일럿</div>
+    <div class="step"><b>2. 복사 버튼</b>이 페이지 문장 옆 복사 버튼 → AI 입력창에 길게 눌러 붙여 넣기</div>
+    <div class="step"><b>3. 노란 글씨만 고치기</b>[ ] 안을 우리 가게 이야기로. 고치기 어려우면 그대로 보내도 OK</div>
+    <div class="step"><b>4. 말로 해도 OK</b>입력창 옆 마이크 버튼을 누르고 손님에게 설명하듯 말하기</div>
+  </div>
+  <div class="warn"><b>손님 개인정보는 넣지 마세요.</b> 이름·전화번호·주소는 지우고 붙여 넣습니다. 가격·법·세금처럼 중요한 숫자는 AI 답을 한 번 더 확인하세요.</div>
+</section>
+
+<section id="p1">
+  <h2><span class="num">1</span>AI가 나를 인터뷰하게 해서 '우리 가게 한 줄' 만들기</h2>
+  <p class="lead">5분 · 포인트는 내가 잘 쓰는 게 아니라 AI가 잘 묻게 하는 것. 답은 짧아도 됩니다.</p>
+  <div class="card sky">
+    <div class="prompt" id="t1">나는 <span class="var">[마포]</span>에서 <span class="var">[백반집]</span>을 <span class="var">[5년]</span>째 하고 있는 사장이야.
+우리 가게를 한 문장으로 소개하는 '우리 가게 한 줄'을 만들고 싶어.
+
+답하기 전에, 좋은 한 줄을 만드는 데 필요한 질문을 나한테 한 번에 하나씩, 5개까지 물어봐 줘.
+다 답하면 손님 입장에서 끌리는 한 줄 3개를 만들어 줘.<button class="copy" data-target="t1">복사</button></div>
+    <details><summary>다 했으면 이어서 이렇게</summary>
+      <div class="prompt" id="t1b">이 한 줄 중에 <span class="var">[2번]</span>으로 할게. 이걸 네이버 플레이스 소개글 3줄로 늘려 줘. 과장 없이, 우리 가게에 실제로 있는 것만.<button class="copy" data-target="t1b">복사</button></div>
+    </details>
+    <details><summary>결과 예시 (가상 백반집)</summary>
+      <ul class="tight"><li>가성비형: "9천 원에 집밥 한 상, 반찬은 눈치 없이 리필"</li><li>단골형: "이름을 기억해 주는 마포의 점심 식탁"</li><li>혼밥형: "1인석이 있는 백반집, 혼자여도 한 상 가득"</li></ul>
+      <p class="meta">셋 중 무엇을 고를지는 사장님이 정합니다. 그 선택이 곧 우리 가게의 전략입니다.</p>
+    </details>
+  </div>
+</section>
+
+<section id="p2">
+  <h2><span class="num">2</span>불만 리뷰에 답글 달기</h2>
+  <p class="lead">5분 · 사과 → 이유 한 줄 → 다음 약속. 마지막 한 줄은 사장님이 직접.</p>
+  <div class="card coral">
+    <h3>연습용 리뷰 (가상)</h3>
+    <p>별점 1점 · "포장 주문했는데 국이 새서 가방이 다 젖었어요. 전화도 안 받으시고요."</p>
+    <div class="prompt" id="t2">나는 <span class="var">[마포의 백반집]</span> 사장이야. 아래 리뷰에 답글을 써 줘.
+순서: 사과 → 이유 한 줄(변명처럼 들리지 않게) → 다음부터 바꿀 구체적인 약속.
+3~4문장, 손님 이름이나 개인정보는 쓰지 마. 말투는 <span class="var">[정중하지만 따뜻하게]</span>.
+
+리뷰: "포장 주문했는데 국이 새서 가방이 다 젖었어요. 전화도 안 받으시고요."<button class="copy" data-target="t2">복사</button></div>
+    <details><summary>한 번 더 고치는 말</summary>
+      <ul class="tight"><li>"더 짧게, 두 문장으로"</li><li>"덜 딱딱하게, 동네 사장님 말투로"</li><li>"사과는 한 번만, 약속은 더 구체적으로"</li></ul>
+    </details>
+    <details><summary>체크리스트</summary>
+      <ul class="tight"><li>사과가 맨 앞에 있나</li><li>이유가 핑계처럼 들리지 않나</li><li>약속이 구체적인가 (예: 국 용기에 랩 한 번 더, 봉투 따로)</li><li>사장님만 쓸 수 있는 한 줄이 들어갔나</li></ul>
+    </details>
+    <details><summary>리뷰 여러 개를 한 번에 정리하려면</summary>
+      <div class="prompt" id="t2b">아래는 우리 가게 최근 리뷰야.
+1) 손님이 반복해서 칭찬하는 것 3가지
+2) 반복되는 불만 3가지
+3) 이번 주에 돈 안 들이고 바로 고칠 것 1가지
+를 표로 정리해 줘. 리뷰에 없는 내용은 지어내지 마.
+
+<span class="var">[리뷰 붙여 넣기]</span><button class="copy" data-target="t2b">복사</button></div>
+      <a class="dl" href="data/practice_reviews_sample.txt" download>연습용 리뷰 8개 받기</a>
+    </details>
+  </div>
+</section>
+
+<section id="p3">
+  <h2><span class="num">3</span>이번 주 홍보 글, 채널별로 한 번에</h2>
+  <p class="lead">5분 · 같은 소식을 네이버 플레이스·당근·인스타그램 말투로.</p>
+  <div class="card sage">
+    <div class="prompt" id="t3">나는 <span class="var">[마포의 백반집]</span> 사장이야. 이번 주에 알릴 소식은 <span class="var">[신메뉴 고등어구이 정식 9,000원, 평일 점심만]</span>.
+우리 단골은 <span class="var">[근처 30~40대 직장인]</span>이야.
+네이버 플레이스 소식, 당근 비즈프로필 소식, 인스타그램 글을 각각 하나씩 써 줘.
+과장 없이, 이모지 없이, 각 3~4줄. 마지막에 어떤 사진을 찍어 올리면 좋을지 하나씩 추천해 줘.<button class="copy" data-target="t3">복사</button></div>
+    <div class="warn">사진은 AI 추천 구도로 <b>실제 음식</b>을 찍으세요. AI로 그린 음식 사진은 과장 논란이 생길 수 있습니다. 올리기 전 가격·요일·메뉴 이름을 꼭 확인!</div>
+  </div>
+</section>
+
+<section id="talk">
+  <h2><span class="num">★</span>토크콘서트 · 상황별 AI 솔루션</h2>
+  <p class="lead">내 가게와 가장 비슷한 상황 하나를 골라 그대로 따라 해 보세요. 샘플 자료는 모두 가상입니다.</p>
+
+  <div class="card">
+    <div class="sit"><img src="img/ill_s1_pilates.jpg" alt="필라테스 센터 원장이 길 건너 새 센터를 바라보는 그림">
+    <div><span class="pill">상황 ①</span><h3>공덕동 3년 차 필라테스, 길 건너 경쟁 센터 등장</h3>
+    <p class="meta">고민: 우리 센터만의 차별점, 경쟁력은 무엇일까? · 흐름: 경쟁 비교 → 우리 강점 → 회원 페르소나 → 등록 여정 → SNS 기획 → 차별화 전략</p>
+    <a class="dl" href="data/situation1_pilates_studio.txt" download>샘플 자료: 센터 정보·경쟁 센터·리뷰</a></div></div>
+    <div class="prompt" id="s1">길 건너에 대형 센터가 생겼어. 전략을 짜기 전에 우리 센터에 대해 필요한 걸 나한테 먼저 하나씩 물어봐 줘.
+그다음 아래 자료를 바탕으로
+1) 경쟁 비교표 2) 우리만의 강점 3가지 3) 대표 회원 3명
+4) 체험 수업부터 등록까지 손님이 빠져나가는 지점 3곳을 정리해 줘.
+
+<span class="var">[샘플 자료 붙여 넣기]</span><button class="copy" data-target="s1">복사</button></div>
+    <details><summary>이어서 물어볼 말</summary><ul class="tight"><li>"이 강점을 살린 인스타그램 게시물 4주 계획을 짜 줘"</li><li>"체험 수업 당일에 등록률을 올릴 작은 장치 3개만"</li><li>"가격 경쟁 없이 이길 수 있는 한 줄 포지션을 3개 제안해 줘"</li></ul></details>
+  </div>
+
+  <div class="card">
+    <div class="sit"><img src="img/ill_s2_craft.jpg" alt="나전칠기 장인과 외국인 관광객 그림">
+    <div><span class="pill">상황 ②</span><h3>이태원 20년 차 전통공예 장인, 외국인 대상 온라인 진출</h3>
+    <p class="meta">고민: 내 상품을 온라인에서 어떻게 팔까? · 흐름: 상품 분석 → 외국인 페르소나 → 다국어 상품 설명 → 장인 이야기 콘텐츠 → 판로 전략</p>
+    <a class="dl" href="data/situation2_craft_products.txt" download>샘플 자료: 장인 이야기·상품 5개</a></div></div>
+    <div class="prompt" id="s2">나는 이태원에서 20년째 나전칠기를 만드는 장인이야. 내 작품을 외국인 손님 눈으로 소개하고 싶어.
+아래 자료를 보고
+1) 외국인 손님 유형 2가지를 정리하고
+2) 자개 명함 지갑의 상품 설명을 영어와 일본어로 써 줘(손님들이 실제로 물어본 질문에 답이 되게)
+3) 내 이야기를 3문장 소개글로 만들어 줘.
+
+<span class="var">[샘플 자료 붙여 넣기]</span><button class="copy" data-target="s2">복사</button></div>
+    <details><summary>이어서 물어볼 말</summary><ul class="tight"><li>"Etsy, 자사 쇼핑몰, 인스타그램 판매를 처음 하는 1인 공방 기준으로 비교표로 정리해 줘. 수수료는 공식 안내를 확인하라고 표시해 줘"</li><li>"작업 과정을 찍은 15초 영상 대본, 컷 5개로"</li><li>"십장생 문양의 뜻을 외국인에게 설명하는 카드 문구"</li></ul></details>
+  </div>
+
+  <div class="card">
+    <div class="sit"><img src="img/ill_s3_budae.jpg" alt="부대찌개집 사장님이 원가를 계산하는 그림">
+    <div><span class="pill">상황 ③</span><span class="pill b">현장 라이브</span><h3>대학가 착한가격 부대찌개, 팔아도 남는 게 없다</h3>
+    <p class="meta">고민: 가격은 유지하면서 어떻게 더 남길까? · 흐름: 메뉴별 매출·원가 → 수익성 분석 → 메뉴 구성 → 세트 → 추가 판매 → 가격 전략</p>
+    <a class="dl" href="data/situation3_budae_menu_cost.csv" download>샘플: 메뉴별 원가 CSV</a><a class="dl" href="data/situation3_budae_fixed_cost.csv" download>샘플: 고정비 CSV</a></div></div>
+    <div class="prompt" id="s3">대학가에서 5년째 착한가격 부대찌개집을 해. 첨부한 메뉴별 판매가·원가·판매량과 고정비를 보고
+1) 메뉴별 매출, 1개당 이익, 원가율, 총이익을 표로 정리하고
+2) 가장 많이 남는 메뉴와 가장 덜 남는 메뉴를 짚어 줘.
+3) 1인분 가격 8,000원은 그대로 두고 더 남기는 방법 3가지를 숫자로 비교해 줘.
+계산은 표로 보여 주고, 내가 준 숫자 말고는 지어내지 마.<button class="copy" data-target="s3">복사</button></div>
+    <details><summary>이어서 물어볼 말</summary><ul class="tight"><li>"부대찌개 1인분 + 라면사리 + 음료를 1만 원 세트로 하면 1건당 이익이 얼마나 달라져?"</li><li>"햄 추가 메뉴의 양과 가격을 다시 짜는 안 2개"</li><li>"배달 매출은 수수료를 빼면 실제로 얼마 남는지 따로 계산해 줘"</li></ul></details>
+    <p class="meta">파일 첨부가 안 되면 CSV를 메모장으로 열어 내용을 복사해 붙여도 됩니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="sit"><img src="img/ill_s4_shop.jpg" alt="1인 쇼핑몰 사장님이 포장하는 그림">
+    <div><span class="pill">상황 ④</span><h3>혼자 운영하는 여성의류 쇼핑몰, 일이 끝이 없다</h3>
+    <p class="meta">고민: 업무 효율화를 위해 무엇부터? · 흐름: 반복 문의 분류 → 답장 틀 → 주문 데이터 분석 → 상세페이지 고치기 → SNS 글 → 주간 대시보드</p>
+    <a class="dl" href="data/situation4_customer_inquiries.csv" download>샘플: 고객 문의 30개</a><a class="dl" href="data/situation4_orders_sep.csv" download>샘플: 9월 주문 120건</a></div></div>
+    <div class="prompt" id="s4">나는 혼자 여성의류 쇼핑몰을 운영해.
+첨부한 고객 문의 30개를 유형별로 묶고, 유형마다 바로 보낼 수 있는 답장 틀을 만들어 줘.
+교환·반품 답장에는 '상품을 받은 날부터 7일 안에 신청'이라는 기준을 넣되, 상품 하자는 예외라고 안내해 줘.<button class="copy" data-target="s4">복사</button></div>
+    <details><summary>이어서 물어볼 말</summary><ul class="tight"><li>"9월 주문 데이터에서 교환·반품이 많은 상품과 이유를 찾아 줘. 상세페이지에 무엇을 추가하면 줄어들까?"</li><li>"상품별 인스타그램 글 3개, 실측 사이즈 안내 포함"</li><li>"주간 매출·반품을 한눈에 보는 표를 만들어 줘(가능하면 그래프도)"</li></ul></details>
+  </div>
+
+  <div class="card">
+    <div class="sit"><img src="img/ill_s5_startup.jpg" alt="예비창업팀이 아이디어를 정리하는 그림">
+    <div><span class="pill">상황 ⑤</span><h3>예비창업·초기 스타트업, 사람은 적고 할 일은 많다</h3>
+    <p class="meta">고민: 적은 돈으로 사업성을 어떻게 검증할까? · 흐름: 회의록 정리 → 핵심 가설 → 가장 약한 가정 → 2주 작은 검증 → 사업계획서 초안</p>
+    <a class="dl" href="data/situation5_startup_notes.txt" download>샘플 자료: 회의 메모</a></div></div>
+    <div class="prompt" id="s5">우리 팀 회의 메모야. 이 아이디어에서 우리가 믿고 있는 가정들을 뽑고,
+그중 틀리면 사업이 무너지는 가장 약한 가정부터 순서대로 정리해 줘.
+앱을 만들기 전에 2주 안에 돈을 거의 안 들이고 검증할 방법도 제안해 줘.
+
+<span class="var">[회의 메모 붙여 넣기]</span><button class="copy" data-target="s5">복사</button></div>
+    <details><summary>이어서 물어볼 말</summary><ul class="tight"><li>"검증 결과가 좋으면 예비창업패키지 사업계획서 항목별로 나한테 먼저 질문해 줘"</li><li>"오늘 회의 내용을 할 일·담당·마감 표로 정리해 줘"</li><li>"이 일을 AI 없이 했을 때와 AI로 했을 때 걸리는 시간을 비교해 보자"</li></ul></details>
+  </div>
+</section>
+
+<section id="more">
+  <h2><span class="num">+</span>가게에서 더 해 보기</h2>
+  <p class="lead">강연에 나온 문장들. 필요한 것만 골라 쓰세요.</p>
+  <div class="card">
+    <h3>우리 손님 세 명의 얼굴 그리기</h3>
+    <div class="prompt" id="m1">우리 가게는 <span class="var">[업종·동네]</span>야. 아래 리뷰와 내 설명을 바탕으로 대표 손님 3명을 그려 줘. 언제 오는지, 무엇이 중요한지, 어디서 우리 가게를 알게 되는지 포함해서.
+
+<span class="var">[리뷰나 설명 붙여 넣기]</span><button class="copy" data-target="m1">복사</button></div>
+  </div>
+  <div class="card">
+    <h3>자주 받는 질문 답장 틀</h3>
+    <div class="prompt" id="m2">우리 가게에 손님이 자주 묻는 질문은 <span class="var">[영업시간, 주차, 예약, 포장, 단체석]</span>이야. 카카오 톡채널이나 문자로 바로 보낼 수 있게 질문별 답장 틀을 2~3문장씩 만들어 줘. 우리 가게 정보는 <span class="var">[여기에 적기]</span>.<button class="copy" data-target="m2">복사</button></div>
+  </div>
+  <div class="card">
+    <h3>메뉴 설명 한 줄씩</h3>
+    <div class="prompt" id="m3"><span class="var">[백반집]</span> 점심 메뉴판 문구를 만들어 줘. 메뉴는 <span class="var">[제육 9,000 / 고등어구이 9,000 / 된장찌개 8,000]</span>. 메뉴마다 한 줄 설명, 과장 없이.<button class="copy" data-target="m3">복사</button></div>
+  </div>
+  <div class="card">
+    <h3>지원사업 서류, 빈칸부터 같이 채우기</h3>
+    <div class="prompt" id="m4">나는 <span class="var">[업종] [몇 년]</span> 차 사장이고 <span class="var">[지원사업 이름]</span>에 신청하려고 해.
+아래는 신청서 항목이야. 내가 답해야 할 질문을 항목별로 먼저 물어봐 줘.
+내 답을 다 들으면, 항목별 초안을 심사위원이 읽기 쉽게 써 줘.
+내가 말하지 않은 숫자나 실적은 절대 만들지 마.
+
+<span class="var">[신청서 항목 붙여 넣기]</span><button class="copy" data-target="m4">복사</button></div>
+  </div>
+  <div class="card">
+    <h3>내 노하우로 우리 가게 매뉴얼 만들기</h3>
+    <div class="prompt" id="m5">나는 <span class="var">[업종]</span> 사장이야. 내가 손님 응대할 때 지키는 원칙을 매뉴얼로 만들고 싶어. 나를 인터뷰해서 하나씩 끌어내 줘. 다 되면 새 직원이 첫날 읽을 수 있는 1쪽짜리로 정리해 줘.<button class="copy" data-target="m5">복사</button></div>
+  </div>
+  <div class="card">
+    <h3>말로 만드는 우리 가게 계산기 (바이브코딩)</h3>
+    <div class="prompt" id="m6">메뉴 이름, 판매가, 1개당 원가, 하루 판매량을 넣으면 메뉴별 이익과 원가율, 하루 총이익을 계산해 주는 간단한 웹페이지를 만들어 줘. 휴대폰에서도 쓰기 쉽게, 버튼 크게.<button class="copy" data-target="m6">복사</button></div>
+    <p class="meta">챗GPT·클로드에서 결과 화면(미리보기)이 바로 열립니다. 무료판에서는 기능이 제한될 수 있어요.</p>
+    <a class="dl" href="calculator.html">완성 예시: 메뉴 이익 계산기 열어 보기</a>
+  </div>
+</section>
+
+<section id="check">
+  <h2><span class="num">✓</span>오늘 저녁 가게에서 체크</h2>
+  <div class="card check">
+    <label><input type="checkbox"> 네이버 플레이스·톡채널·당근의 영업시간·휴무일이 같다</label>
+    <label><input type="checkbox"> 메뉴·가격이 최신이다 (지난 가격 인상 반영)</label>
+    <label><input type="checkbox"> 실제 음식·매장 사진이 최근 것이다</label>
+    <label><input type="checkbox"> 네이버 지도에서 우리 가게를 손님처럼 눌러 'AI 브리핑'을 읽어 봤다</label>
+    <label><input type="checkbox"> 최근 리뷰 하나에 AI 초안 + 내 한 줄로 답글을 달았다</label>
+    <label><input type="checkbox"> 주차·브레이크타임·1인석·포장처럼 자주 묻는 질문의 답을 소개글에 적었다</label>
+    <label><input type="checkbox"> AI에게 15분 인터뷰를 받고 이번 주 할 일 3개를 받았다</label>
+  </div>
+  <div class="card sky">
+    <h3>지원사업, 아는 사장님이 씁니다</h3>
+    <ul class="tight">
+      <li>소상공인24: 중기부 소상공인 지원사업 신청 창구 (<a href="https://www.sbiz24.kr" target="_blank" rel="noopener">sbiz24.kr</a>)</li>
+      <li>기업마당: 정부 지원사업 공고 모음 (<a href="https://www.bizinfo.go.kr" target="_blank" rel="noopener">bizinfo.go.kr</a>)</li>
+      <li>서울신용보증재단: 소상공인 아카데미·컨설팅 안내 (<a href="https://www.seoulshinbo.co.kr" target="_blank" rel="noopener">seoulshinbo.co.kr</a>)</li>
+    </ul>
+    <p class="meta">모집 시기는 해마다 다릅니다. 알림을 받아 두세요.</p>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    AI 잘 쓰는 옆집 사장님의 비밀 전략 A to Z · 2026 서울신용보증재단 소상공인 공개강좌 · 김덕진(ITCL)<br>
+    이 페이지의 가게·인물·숫자 샘플은 모두 실습용 가상 자료입니다. 그림은 AI로 만든 삽화입니다.
+  </div>
+</footer>
+<div class="toast" id="toast">복사했어요. AI 입력창에 붙여 넣으세요</div>
+<script>
+(function(){
+  var toast=document.getElementById('toast'), timer;
+  function show(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('on')},1800)}
+  function textOf(el){var c=el.cloneNode(true);var b=c.querySelector('.copy');if(b)b.remove();return c.textContent.replace(/\s+$/,'')}
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=textOf(document.getElementById(btn.dataset.target));
+      function fallback(){var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');show('복사했어요. AI 입력창에 붙여 넣으세요')}catch(e){show('길게 눌러 직접 복사해 주세요')}document.body.removeChild(ta)}
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){show('복사했어요. AI 입력창에 붙여 넣으세요')},fallback)}else{fallback()}
+    });
+  });
+  var fs=17;
+  document.querySelectorAll('[data-fs]').forEach(function(b){b.addEventListener('click',function(){fs=Math.min(23,Math.max(14,fs+Number(b.dataset.fs)));document.documentElement.style.setProperty('--fs',fs+'px')})});
+})();
+</script>
+</body>
+</html>
